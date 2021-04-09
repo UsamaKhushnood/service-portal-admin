@@ -45,7 +45,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="tabs widget">
+      <div class="tabs widget mt-4">
         <ul class="nav nav-tabs widget">
           <li>
             <a data-toggle="tab" href="#userPayoutRequest" class="active"
@@ -492,37 +492,37 @@ export default {};
 </script>
 <style lang="scss">
 
-a[data-toggle="tab"].active {
-    background: #0000006e;
-}
+// a[data-toggle="tab"].active {
+//     background: #0000006e;
+// }
 
-.tabs .nav-tabs>li>a.active:hover {
-    background: #0000006e;
-}
+// .tabs .nav-tabs>li>a.active:hover {
+//     background: #0000006e;
+// }
 
-.tabs.widget{
-  width: 100%;
-}
+// .tabs.widget{
+//   width: 100%;
+// }
 
-.panel .panel-body{
-  margin-bottom: 0;
-  padding: 15px;
-}
+// .panel .panel-body{
+//   margin-bottom: 0;
+//   padding: 15px;
+// }
 
-.btn i, .btn .c-icon{
-  width: auto;
-}
+// .btn i, .btn .c-icon{
+//   width: auto;
+// }
 
-.tabs .nav-tabs > li > a.active:after {
-    content: ' ';
-    width: 10px;
-    height: 10px;
-    background: #fff;
-    z-index: 99999;
-    border: 1px solid #fff;
-    position: absolute;
-    bottom: -12px;
-    transform: rotate(45deg);
-    left: 50%;
-}
+// .tabs .nav-tabs > li > a.active:after {
+//     content: ' ';
+//     width: 10px;
+//     height: 10px;
+//     background: #fff;
+//     z-index: 99999;
+//     border: 1px solid #fff;
+//     position: absolute;
+//     bottom: -12px;
+//     transform: rotate(45deg);
+//     left: 50%;
+// }
 </style>

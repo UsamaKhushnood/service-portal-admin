@@ -74,9 +74,9 @@ const EscrowAccount = () =>
 const Invoice = () =>
     import ("@/views/payments/Invoice");
 
-// customers 
-const Invoice = () =>
-    import ("@/views/payments/Invoice");
+// // customers 
+// const Invoice = () =>
+//     import ("@/views/payments/Invoice");
 
 Vue.use(Router);
 

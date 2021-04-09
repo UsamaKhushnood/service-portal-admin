@@ -623,9 +623,9 @@ select {
 /* Tabs & Accordion */
 
 .tabs .nav-tabs {
-    background-color: #1fae66;
+    background-color: #3c4b64;
     border-bottom: none;
-    padding: 5px 5px !important;
+    padding: 5px 0 !important;
 }
 
 .tabs .nav-tabs>li {
@@ -686,15 +686,15 @@ a[data-toggle="tab"].active {
 
 .tabs .nav-tabs>li>a.active:after {
     content: ' ';
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background: #fff;
     z-index: 99999;
     border: 1px solid #fff;
     position: absolute;
     bottom: -12px;
-    transform: rotate(45deg);
     left: 50%;
+    clip-path: polygon(50% 0%, 100% 50%, 0 50%, 0% 50%);
 }
 
 .tabs .nav-tabs>li.active>a,
@@ -7612,7 +7612,7 @@ footer .vd_bottom {
 }
 
 .dashboardPanel {
-    border-top: 5px solid #f89c2c;
+    border-top: 5px solid #3c4b64;
 }
 
 .dashboardPanel a {

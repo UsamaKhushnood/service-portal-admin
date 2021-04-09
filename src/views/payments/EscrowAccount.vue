@@ -54,122 +54,159 @@
         </div>
       </div>
     </div>
-    <CTabs class="tabs ctabs" active>
-      <CTab title="New Payment" active>
-        <CDataTable
-          :hover="true"
-          :striped="true"
-          :border="true"
-          :fixed="false"
-          :items="items"
-          :fields="[
-            'No',
-            'ReviewID',
-            'ForShop',
-            'UserName',
-            'AverageRating',
-            'Date',
-            'Status',
-            'Actions',
-          ]"
-          :items-per-page="10"
-          pagination
-        >
-          <template #Status="{item}">
-            <td>
-              <CBadge :color="getBadge(item.Status)">{{ item.Status }} </CBadge>
-            </td>
-          </template>
-          <template #Actions="{index}">
-            <td>
-              <button
-                class="btn btn-success btn-sm text-center py-0"
-                @click="deleteEntry(index)"
-              >
-                <i class="fas fa-times" style="font-size:10px"></i>
-              </button>
-            </td>
-          </template>
-        </CDataTable>
-      </CTab>
-      <CTab title="New Release">
-        <CDataTable
-          :hover="true"
-          :striped="true"
-          :border="true"
-          :fixed="false"
-          :items="items"
-          :fields="[
-            'No',
-            'ReviewID',
-            'ForShop',
-            'UserName',
-            'AverageRating',
-            'Date',
-            'Status',
-            'Actions',
-          ]"
-          :items-per-page="10"
-          pagination
-        >
-          <template #Status="{item}">
-            <td>
-              <CBadge :color="getBadge(item.Status)">{{ item.Status }} </CBadge>
-            </td>
-          </template>
-          <template #Actions="{index}">
-            <td>
-              <button
-                class="btn btn-success btn-sm text-center py-0"
-                @click="deleteEntry(index)"
-              >
-                <i class="fas fa-times" style="font-size:10px"></i>
-              </button>
-            </td>
-          </template>
-        </CDataTable>
-      </CTab>
-      <CTab title="New Refund">
-        <CDataTable
-          :hover="true"
-          :striped="true"
-          :border="true"
-          :fixed="false"
-          :items="items"
-          :fields="[
-            'No',
-            'ReviewID',
-            'ForShop',
-            'UserName',
-            'AverageRating',
-            'Date',
-            'Status',
-            'Actions',
-          ]"
-          :items-per-page="10"
-          pagination
-        >
-          <template #Status="{item}">
-            <td>
-              <CBadge :color="getBadge(item.Status)">{{ item.Status }} </CBadge>
-            </td>
-          </template>
-          <template #Actions="{index}">
-            <td>
-              <button
-                class="btn btn-success btn-sm text-center py-0"
-                @click="deleteEntry(index)"
-              >
-                <i class="fas fa-times" style="font-size:10px"></i>
-              </button>
-            </td>
-          </template>
-        </CDataTable>
-      </CTab>
-    </CTabs>
+    <div class="tabs widget mt-4">
+      <ul class="nav nav-tabs widget">
+        <li>
+          <a href="#newpayment" data-toggle="tab" class="active">New Payment</a>
+        </li>
+        <li>
+          <a href="#newrelease" data-toggle="tab">New Release</a>
+        </li>
+        <li>
+          <a href="#newrefund" data-toggle="tab">New Refund</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="newpayment" class="tab-pane fade in active show">
+          <CDataTable
+            :hover="true"
+            :striped="true"
+            :border="true"
+            :fixed="false"
+            :items="items"
+            :fields="[
+              'No',
+              'ReviewID',
+              'ForShop',
+              'UserName',
+              'AverageRating',
+              'Date',
+              'Status',
+              'Actions',
+            ]"
+            :items-per-page="10"
+            pagination
+          >
+            <template #Status="{item}">
+              <td>
+                <CBadge :color="getBadge(item.Status)"
+                  >{{ item.Status }}
+                </CBadge>
+              </td>
+            </template>
+            <template #Actions="{index}">
+              <td>
+                <button
+                  class="btn btn-success btn-sm text-center py-0"
+                  @click="deleteEntry(index)"
+                >
+                  <i class="fas fa-times" style="font-size:10px"></i>
+                </button>
+              </td>
+            </template>
+          </CDataTable>
+        </div>
+        <div id="newrelease" class="tab-pane fade">
+          <CDataTable
+            :hover="true"
+            :striped="true"
+            :border="true"
+            :fixed="false"
+            :items="items"
+            :fields="[
+              'No',
+              'ReviewID',
+              'ForShop',
+              'UserName',
+              'AverageRating',
+              'Date',
+              'Status',
+              'Actions',
+            ]"
+            :items-per-page="10"
+            pagination
+          >
+            <template #Status="{item}">
+              <td>
+                <CBadge :color="getBadge(item.Status)"
+                  >{{ item.Status }}
+                </CBadge>
+              </td>
+            </template>
+            <template #Actions="{index}">
+              <td>
+                <button
+                  class="btn btn-success btn-sm text-center py-0"
+                  @click="deleteEntry(index)"
+                >
+                  <i class="fas fa-times" style="font-size:10px"></i>
+                </button>
+              </td>
+            </template>
+          </CDataTable>
+        </div>
+        <div id="newrefund" class="tab-pane fade">
+          <CDataTable
+            :hover="true"
+            :striped="true"
+            :border="true"
+            :fixed="false"
+            :items="items"
+            :fields="[
+              'No',
+              'ReviewID',
+              'ForShop',
+              'UserName',
+              'AverageRating',
+              'Date',
+              'Status',
+              'Actions',
+            ]"
+            :items-per-page="10"
+            pagination
+          >
+            <template #Status="{item}">
+              <td>
+                <CBadge :color="getBadge(item.Status)"
+                  >{{ item.Status }}
+                </CBadge>
+              </td>
+            </template>
+            <template #Actions="{index}">
+              <td>
+                <button
+                  class="btn btn-success btn-sm text-center py-0"
+                  @click="deleteEntry(index)"
+                >
+                  <i class="fas fa-times" style="font-size:10px"></i>
+                </button>
+              </td>
+            </template>
+          </CDataTable>
+        </div>
+        
+      </div>
+    </div>
   </div>
 </template>
 <script>
-export default {};
+import usersData from "./reviewTableData";
+export default {
+  data: () => ({
+    items: usersData,
+  }),
+  methods: {
+    getBadge(status) {
+      return status === "Seen"
+        ? "success"
+        : status === "Unseen"
+        ? "danger"
+        : "primary";
+    },
+    deleteEntry(index) {
+      this.items.splice(index, 1);
+    },
+  },
+};
 </script>
 <style lang="scss"></style>
