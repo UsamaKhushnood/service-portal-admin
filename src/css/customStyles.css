@@ -31,3 +31,8 @@
 .sidebarLogoutBtn {
     bottom: 0
 }
+
+.vd_status-widget.widget.dashboardPanel {
+    background: #fff;
+    padding: 10px;
+}

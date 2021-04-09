@@ -4553,6 +4553,7 @@ header,
 
 .vd_bg-blue {
     background-color: #23709e !important;
+    border-radius: 0;
 }
 
 .vd_bg-white {
@@ -7695,6 +7696,7 @@ footer .vd_bottom {
     width: 90%;
     margin: 0 auto 10px;
     min-height: 60px;
+    padding: 15px 0;
 }
 
 .company-value {

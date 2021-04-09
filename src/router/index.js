@@ -74,9 +74,47 @@ const EscrowAccount = () =>
 const Invoice = () =>
     import ("@/views/payments/Invoice");
 
-// // customers 
-// const Invoice = () =>
-//     import ("@/views/payments/Invoice");
+// customers 
+const PortalClients = () =>
+    import ("@/views/customers/PortalClients");
+const PortalUsers = () =>
+    import ("@/views/customers/PortalUsers");
+
+// income 
+const ClientsIncome = () =>
+    import ("@/views/income/ClientsIncome");
+const PortalIncome = () =>
+    import ("@/views/income/PortalIncome");
+
+// Portal Settings 
+const Languages = () =>
+    import ("@/views/portal-settings/Languages");
+const Settings = () =>
+    import ("@/views/portal-settings/Settings");
+const CompanyType = () =>
+    import ("@/views/portal-settings/CompanyType");
+const AddCountrys = () =>
+    import ("@/views/portal-settings/AddCountrys");
+const Admin = () =>
+    import ("@/views/portal-settings/Admin");
+const TextModule = () =>
+    import ("@/views/portal-settings/TextModule");
+const Reasons = () =>
+    import ("@/views/portal-settings/Reasons");
+const PolicyTerms = () =>
+    import ("@/views/portal-settings/PolicyTerms");
+const OurServices = () =>
+    import ("@/views/portal-settings/OurServices");
+const ServiceComission = () =>
+    import ("@/views/portal-settings/ServiceComission");
+const AccountUpgradeClient = () =>
+    import ("@/views/portal-settings/AccountUpgradeClient");
+const CompanySkill = () =>
+    import ("@/views/portal-settings/CompanySkill");
+const CompanyCharacter = () =>
+    import ("@/views/portal-settings/CompanyCharacter");
+const BidsAmountClient = () =>
+    import ("@/views/portal-settings/BidsAmountClient");
 
 Vue.use(Router);
 
@@ -251,6 +289,134 @@ function configRoutes() {
                         },
 
 
+                    ],
+                },
+
+                {
+                    path: "customers",
+                    redirect: "/customers/portal-clients",
+                    name: "Customers",
+                    component: {
+                        render(c) {
+                            return c("router-view");
+                        },
+                    },
+                    children: [{
+                            path: "portal-clients",
+                            name: "Portal Clients",
+                            component: PortalClients,
+                        },
+                        {
+                            path: "portal-users",
+                            name: "Portal Users",
+                            component: PortalUsers,
+                        }
+
+                    ],
+                },
+
+                {
+                    path: "income",
+                    redirect: "/income/client-income",
+                    name: "Income",
+                    component: {
+                        render(c) {
+                            return c("router-view");
+                        },
+                    },
+                    children: [{
+                            path: "clients-income",
+                            name: "clients Income",
+                            component: ClientsIncome,
+                        },
+                        {
+                            path: "Portal-income",
+                            name: "Portal Income",
+                            component: PortalIncome,
+                        }
+
+                    ],
+                },
+
+                {
+                    path: "portal-settings",
+                    redirect: "/portal-settings/languages",
+                    name: "portal-settings",
+                    component: {
+                        render(c) {
+                            return c("router-view");
+                        },
+                    },
+                    children: [{
+                            path: "website-languages",
+                            name: "Website Languages",
+                            component: Languages,
+                        },
+                        {
+                            path: "website-settings",
+                            name: "Website Settings",
+                            component: Settings,
+                        },
+                        {
+                            path: "company-type",
+                            name: "Company Type",
+                            component: CompanyType,
+                        },
+                        {
+                            path: "add-country",
+                            name: "AddCountrys",
+                            component: AddCountrys,
+                        },
+                        {
+                            path: "Admin",
+                            name: "Admin",
+                            component: Admin,
+                        },
+                        {
+                            path: "text-module",
+                            name: "Text Module",
+                            component: TextModule,
+                        },
+                        {
+                            path: "reasons",
+                            name: "Reasons",
+                            component: Reasons,
+                        },
+                        {
+                            path: "policy-and-terms",
+                            name: "Policy and Terms",
+                            component: PolicyTerms,
+                        },
+                        {
+                            path: "our-services",
+                            name: "Our Services",
+                            component: OurServices,
+                        },
+                        {
+                            path: "services-comission",
+                            name: "Services Comission",
+                            component: ServiceComission,
+                        },
+                        {
+                            path: "account-upgrade-client",
+                            name: "Account Upgrade Client",
+                            component: AccountUpgradeClient,
+                        },
+                        {
+                            path: "company-skills",
+                            name: "Company Skill",
+                            component: CompanySkill,
+                        },
+                        {
+                            path: "company-character",
+                            name: "Company Character",
+                            component: CompanyCharacter,
+                        },
+                        {
+                            path: "bids-amount-client",
+                            name: "Bids Amount Client",
+                            component: BidsAmountClient,
+                        },
                     ],
                 },
 
