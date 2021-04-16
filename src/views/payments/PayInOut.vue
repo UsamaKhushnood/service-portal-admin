@@ -4,7 +4,7 @@
       <div class="vd_content clearfix">
         <div class="vd_title-section clearfix">
           <div class="vd_panel-header">
-            <h1><i class="fa fa-flag-o"></i>PayIn / PayOut Accounts</h1>
+            <h1><i class="fa fa-flag-o"></i> PayIn / PayOut Accounts</h1>
           </div>
         </div>
       </div>
@@ -25,7 +25,9 @@
                     class="btn vd_btn vd_bg-blue btn-lg btn-block"
                     data-toggle="modal"
                     data-target="#addPayIn"
+                    v-b-modal="'add-new-account-modal'"
                   >
+                    <AddNewAccountPopup></AddNewAccountPopup>
                     <span class="append-icon"><i class="fa fa-plus"></i></span
                     >Add New Account
                   </button>
@@ -37,53 +39,56 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-12 pdng5">
-                <table class="discountTable">
-                  <colgroup>
-                    <col width="10%" />
-                    <col width="30%" />
-                    <col width="30%" />
-                    <col width="30%" />
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th class="text-center">No.</th>
-                      <th class="text-center">Title</th>
-                      <th class="text-center">Details</th>
-                      <th class="text-center">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>paypal</td>
-                      <td>paypal@paypal.com</td>
-                      <td>
-                        <a
-                          class="btn menu-icon vd_bd-blue vd_blue mrgn5 pdng1-8"
-                          data-toggle="modal"
-                          data-target="#editPayWay"
-                          ><i
-                            class="fa fa-pencil"
-                            data-original-title="edit"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                          ></i
-                        ></a>
-                        <a
-                          class="btn menu-icon vd_bd-red vd_red mrgn5 pdng1-8"
-                          data-toggle="modal"
-                          data-target="#removePayWay"
-                          ><i
-                            class="fa fa-trash-o"
-                            data-original-title="remove"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                          ></i
-                        ></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <CDataTable
+                  :hover="true"
+                  :striped="true"
+                  :border="true"
+                  :fixed="false"
+                  :items="items"
+                  :fields="['No', 'Title', 'Details', 'Actions']"
+                  :items-per-page="10"
+                  pagination
+                >
+                  <template #No="{index}">
+                    <td>
+                      {{ index + 1 }}
+                    </td>
+                  </template>
+                  <template #Actions="{index}">
+                    <td class="menu-action">
+                      <a
+                        data-target="#viewAccept"
+                        data-toggle="modal"
+                        class="btn menu-icon vd_bd-blue vd_blue"
+                        v-b-modal="'edit-account-modal' + index"
+                      >
+                        <i
+                          data-original-title="view"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          class="fa fa-pencil"
+                        ></i>
+                      </a>
+
+                      <a
+                        data-target="#denyRequest"
+                        data-toggle="modal"
+                        class="btn menu-icon vd_bd-red vd_red"
+                        v-b-modal="'delete-account-modal' + index"
+                      >
+                        <i
+                          data-original-title="denied"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          class="fa fa-trash"
+                        ></i>
+                      </a>
+                    </td>
+                    <EditAccountPopup :propsindex="index"> </EditAccountPopup>
+                    <DeleteAccountPopup :propsindex="index">
+                    </DeleteAccountPopup>
+                  </template>
+                </CDataTable>
               </div>
               <!-- col-md-12 end -->
             </div>
@@ -109,6 +114,7 @@
                     class="btn vd_btn vd_bg-blue btn-lg btn-block"
                     data-toggle="modal"
                     data-target="#addPayOut"
+                    v-b-modal="'add-new-account-modal'"
                   >
                     <span class="append-icon"><i class="fa fa-plus"></i></span
                     >Add New Account
@@ -121,53 +127,53 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-12 pdng5">
-                <table class="discountTable">
-                  <colgroup>
-                    <col width="10%" />
-                    <col width="30%" />
-                    <col width="30%" />
-                    <col width="30%" />
-                  </colgroup>
-                  <thead>
-                    <tr>
-                      <th class="text-center">No.</th>
-                      <th class="text-center">Title</th>
-                      <th class="text-center">Details</th>
-                      <th class="text-center">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>visa</td>
-                      <td>1234 5555 6863 2254</td>
-                      <td>
-                        <a
-                          class="btn menu-icon vd_bd-blue vd_blue mrgn5 pdng1-8"
-                          data-toggle="modal"
-                          data-target="#editPayWay"
-                          ><i
-                            class="fa fa-pencil"
-                            data-original-title="edit"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                          ></i
-                        ></a>
-                        <a
-                          class="btn menu-icon vd_bd-red vd_red mrgn5 pdng1-8"
-                          data-toggle="modal"
-                          data-target="#removePayWay"
-                          ><i
-                            class="fa fa-trash-o"
-                            data-original-title="remove"
-                            data-toggle="tooltip"
-                            data-placement="top"
-                          ></i
-                        ></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <CDataTable
+                  :hover="true"
+                  :striped="true"
+                  :border="true"
+                  :fixed="false"
+                  :items="items"
+                  :fields="['No', 'Title', 'Details', 'Actions']"
+                  :items-per-page="10"
+                  pagination
+                >
+                  <template #No="{index}">
+                    <td>
+                      {{ index + 1 }}
+                    </td>
+                  </template>
+                  <template #Actions="{index}">
+                    <td class="menu-action">
+                      <a
+                        data-target="#viewAccept"
+                        data-toggle="modal"
+                        class="btn menu-icon vd_bd-blue vd_blue"
+                        v-b-modal="'edit-account-modal' + index"
+                      >
+                        <i
+                          data-original-title="view"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          class="fa fa-pencil"
+                        ></i>
+                      </a>
+
+                      <a
+                        data-target="#denyRequest"
+                        data-toggle="modal"
+                        class="btn menu-icon vd_bd-red vd_red"
+                        v-b-modal="'delete-account-modal' + index"
+                      >
+                        <i
+                          data-original-title="denied"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          class="fa fa-trash"
+                        ></i>
+                      </a>
+                    </td>
+                  </template>
+                </CDataTable>
               </div>
               <!-- col-md-12 end -->
             </div>
@@ -181,6 +187,15 @@
   </div>
 </template>
 <script>
-export default {};
+import DeleteAccountPopup from "./AllPopups/PayInOut/DeleteAccountPopup.vue";
+import EditAccountPopup from "./AllPopups/PayInOut/EditAccountPopup.vue";
+import AddNewAccountPopup from "./AllPopups/PayInOut/AddNewAccountPopup.vue";
+import tableData from "./tableData";
+export default {
+  components: { AddNewAccountPopup, EditAccountPopup, DeleteAccountPopup },
+  data: () => ({
+    items: tableData,
+  }),
+};
 </script>
 <style lang="scss"></style>

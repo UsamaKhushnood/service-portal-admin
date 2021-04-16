@@ -2,7 +2,7 @@
   <div>
     <b-sidebar
       :id="'sidebar-backdrop' + dataIndex"
-      class="viewProjectSidebar"
+      class="viewProjectSidebar rightSidebar"
       :class="'viewProjectSidebar' + dataIndex"
       backdrop-variant="dark"
       backdrop
@@ -338,4 +338,6 @@ export default {
   font-size: 13px;
   padding: 5px 0;
 }
+
+
 </style>

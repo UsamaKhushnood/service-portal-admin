@@ -36,3 +36,7 @@
     background: #fff;
     padding: 10px;
 }
+
+.modal-header {
+    border-radius: 0 !important;
+}

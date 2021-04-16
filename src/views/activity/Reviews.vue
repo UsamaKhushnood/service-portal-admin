@@ -33,9 +33,10 @@
           :items-per-page="10"
           pagination
         >
-          <template #Status="{item}">
+          <template #Status="{item , index}">
             <td>
-              <CBadge :color="getBadge(item.Status)">{{ item.Status }} </CBadge>
+              <CBadge :color="getBadge(item.Status)" v-b-modal="'review-seen-popup' + index">{{ item.Status }} </CBadge>
+              <ReviewSeenPopup :popupIndex="index" />
             </td>
           </template>
           <template #Actions="{index}"> 
@@ -52,8 +53,10 @@
 </template>
 
 <script>
+import ReviewSeenPopup from './Review-Popups/ReviewSeenPopup.vue'
 import usersData from "./reviewTableData";
 export default {
+  components: { ReviewSeenPopup },
   name: "Reviews",
   data: () => ({
     items: usersData,

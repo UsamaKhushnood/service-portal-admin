@@ -2,7 +2,6 @@
   <div id="newrequest">
     <div class="vd_content-wrapper">
       <div class="vd_content clearfix">
-
         <div class="vd_title-section clearfix">
           <div class="vd_panel-header">
             <h1><i class="fa fa-flag-o"></i> New Request</h1>
@@ -23,7 +22,7 @@
               </a>
             </div>
           </div>
-          
+
           <div class="col-md-3 col-sm-12 text-center company">
             <div class="vd_status-widget widget dashboardPanel">
               <a class="panel-body vd_blue pd-5" href="#">
@@ -43,8 +42,7 @@
               <a class="panel-body vd_blue pd-5" href="#">
                 <div class="clearfix">
                   <div class="menu-text clearfix">
-                    Accepted
-                  Request
+                    Accepted Request
                   </div>
                   <span class="company-value">10</span>
                 </div>
@@ -72,8 +70,12 @@
               <div id="category1" class="active tab-pane  in">
                 <div class="tabs widget">
                   <ul class="nav nav-tabs widget">
-                    <li class="active">
-                      <a data-toggle="tab" href="#new-request-tab-c1">
+                    <li>
+                      <a
+                        data-toggle="tab"
+                        href="#new-request-tab-c1"
+                        class="active"
+                      >
                         New Request
                         <span class="menu-active">
                           <i class="fa fa-caret-up"></i>
@@ -107,357 +109,317 @@
                   </ul>
                   <div class="tab-content">
                     <div id="new-request-tab-c1" class="tab-pane active">
-                      <div class="pd-20">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="panel widget">
-                              <div class="panel-body table-responsive">
-                                <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th>#</th>
-                                      <th>Company Name</th>
-                                      <th>Category</th>
-                                      <th>Request Time</th>
-                                      <th>Phone-No.</th>
-                                      <th>Options</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>The Company Ltd</td>
-                                      <td class="center">Bitcoin</td>
-                                      <td class="center"></td>
-                                      <td class="center">112</td>
-                                      <td class="menu-action">
-                                        <a
-                                          data-target="#myModal5"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-green vd_green"
-                                        >
-                                          <i
-                                            data-original-title="view"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-eye"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#successAdd"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-yellow vd_yellow"
-                                        >
-                                          <i
-                                            data-original-title="accept"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-check"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#denyRequest"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-red vd_red"
-                                        >
-                                          <i
-                                            data-original-title="denied"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-minus-circle"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#holdRequest"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-red vd_red"
-                                        >
-                                          <i
-                                            data-original-title="hold"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-pause"
-                                          ></i>
-                                        </a>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                              <!-- panel-body end -->
-                            </div>
-                            <!-- panel widget end -->
-                          </div>
-                          <!-- col-md-12 end -->
-                        </div>
-                        <!-- row end -->
-                      </div>
+                      <CDataTable
+                        :hover="true"
+                        :striped="true"
+                        :border="true"
+                        :fixed="false"
+                        :items="items"
+                        :fields="[
+                          'No',
+                          'CompanyName',
+                          'Category',
+                          'RequestTime',
+                          'PhoneNo',
+                          'Options',
+                        ]"
+                        :items-per-page="10"
+                        pagination
+                      >
+                        <template #No="{index}">
+                          <td>
+                            {{ index }}
+                          </td>
+                        </template>
+                        <template #Options="{index}">
+                          <td class="menu-action">
+                            <a
+                              data-target="#viewAccept"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-green vd_green"
+                              v-b-toggle="'view-shop-sidebar' + index"
+                            >
+                              <i
+                                class="fa fa-eye"
+                                v-b-tooltip.hover
+                                title="View"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#viewAccept"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-yellow vd_yellow"
+                              v-b-modal="'successfully-added-modal' + index"
+                            >
+                              <i
+                                class="fa fa-check"
+                                v-b-tooltip.hover
+                                title="Accept"
+                              ></i>
+                            </a>
+
+                            <a
+                              data-target="#denyRequest"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'deny-request-modal' + index"
+                            >
+                              <i
+                                v-b-tooltip.hover
+                                title="Denied"
+                                class="fa fa-minus-circle"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#holdRequest"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'hold-request-modal' + index"
+                            >
+                              <i
+                                class="fa fa-pause"
+                                v-b-tooltip.hover
+                                title="Hold"
+                              ></i>
+                            </a>
+                            <AllPopups :propsindex="index"> </AllPopups>
+                          </td>
+                        </template>
+                      </CDataTable>
                       <!-- pd-20 end -->
                     </div>
 
                     <!-- new-request-tab SECTION 1 END -->
 
                     <div id="request-hold-tab-c1" class="tab-pane">
-                      <div class="pd-20">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="panel widget">
-                              <div class="panel-body table-responsive">
-                                <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th>#</th>
-                                      <th>Company Name</th>
-                                      <th>Category</th>
-                                      <th>Request Time</th>
-                                      <th>Phone-No.</th>
-                                      <th>Options</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>The Company Ltd</td>
-                                      <td class="center">Bitcoin</td>
-                                      <td class="center"></td>
-                                      <td class="center">112</td>
-                                      <td class="menu-action">
-                                        <a
-                                          data-target="#viewAccept"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-green vd_green"
-                                        >
-                                          <i
-                                            data-original-title="view"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-eye"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#successAdd"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-yellow vd_yellow"
-                                        >
-                                          <i
-                                            data-original-title="accept"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-check"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#denyRequest"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-red vd_red"
-                                        >
-                                          <i
-                                            data-original-title="denied"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-minus-circle"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#onHold"
-                                          data-toggle="modal"
-                                          href="javascript:void(0);"
-                                        >
-                                          <span class="label label-danger"
-                                            >On Hold</span
-                                          >
-                                        </a>
-                                        <!--<a data-target="#theReason" data-toggle="modal" href="javascript:void(0);"><span class="label label-default">Reason</span></a>-->
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                              <!-- panel-body end -->
-                            </div>
-                            <!-- panel widget end -->
-                          </div>
-                          <!-- col-md-12 end -->
-                        </div>
-                        <!-- row end -->
-                      </div>
+                      <CDataTable
+                        :hover="true"
+                        :striped="true"
+                        :border="true"
+                        :fixed="false"
+                        :items="items"
+                        :fields="[
+                          'No',
+                          'CompanyName',
+                          'Category',
+                          'RequestTime',
+                          'PhoneNo',
+                          'Options',
+                        ]"
+                        :items-per-page="10"
+                        pagination
+                      >
+                        <template #No="{index}">
+                          <td>
+                            {{ index }}
+                          </td>
+                        </template>
+
+                        <template #Options>
+                          <td class="menu-action">
+                            <a
+                              data-target="#viewAccept"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-green vd_green"
+                            >
+                              <i
+                                data-original-title="view"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-eye"
+                                v-b-tooltip.hover
+                                title="Accept"
+                              ></i>
+                            </a>
+
+                            <a
+                              data-target="#denyRequest"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-red vd_red"
+                            >
+                              <i
+                                data-original-title="denied"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-minus-circle"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#holdRequest"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-red vd_red"
+                            >
+                              <i
+                                data-original-title="hold"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-pause"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#onAccept"
+                              data-toggle="modal"
+                              href="javascript:void(0);"
+                            >
+                              <span class="badge badge-danger">On Hold</span>
+                            </a>
+                          </td>
+                        </template>
+                      </CDataTable>
                       <!-- pd-20 end -->
                     </div>
 
                     <!-- request-hold-tab SECTION 1 END -->
 
                     <div id="accepted-request-tab-c1" class="tab-pane">
-                      <div class="pd-20">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="panel widget">
-                              <div class="panel-body table-responsive">
-                                <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th>#</th>
-                                      <th>Company Name</th>
-                                      <th>Category</th>
-                                      <th>Request Time</th>
-                                      <th>Phone-No.</th>
-                                      <th>Options</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>The Company Ltd</td>
-                                      <td class="center">Bitcoin</td>
-                                      <td class="center"></td>
-                                      <td class="center">112</td>
-                                      <td class="menu-action">
-                                        <a
-                                          data-target="#viewAccept"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-green vd_green"
-                                        >
-                                          <i
-                                            data-original-title="view"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-eye"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#onAccept"
-                                          data-toggle="modal"
-                                          href="javascript:void(0);"
-                                        >
-                                          <span class="label label-success"
-                                            >Accepted</span
-                                          >
-                                        </a>
-                                        <a
-                                          data-target="#denyRequest"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-red vd_red"
-                                        >
-                                          <i
-                                            data-original-title="denied"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-minus-circle"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#holdRequest"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-red vd_red"
-                                        >
-                                          <i
-                                            data-original-title="hold"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-pause"
-                                          ></i>
-                                        </a>
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                              <!-- panel-body end -->
-                            </div>
-                            <!-- panel widget end -->
-                          </div>
-                          <!-- col-md-12 end -->
-                        </div>
-                        <!-- row end -->
-                      </div>
+                      <CDataTable
+                        :hover="true"
+                        :striped="true"
+                        :border="true"
+                        :fixed="false"
+                        :items="items"
+                        :fields="[
+                          'No',
+                          'CompanyName',
+                          'Category',
+                          'RequestTime',
+                          'PhoneNo',
+                          'Options',
+                        ]"
+                        :items-per-page="10"
+                        pagination
+                      >
+                        <template #No="{index}">
+                          <td>
+                            {{ index }}
+                          </td>
+                        </template>
+                        <template #Options>
+                          <td class="menu-action">
+                            <a
+                              data-target="#viewAccept"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-green vd_green"
+                            >
+                              <i
+                                data-original-title="view"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-eye"
+                              ></i>
+                            </a>
+
+                            <a
+                              data-target="#denyRequest"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-red vd_red"
+                            >
+                              <i
+                                data-original-title="denied"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-minus-circle"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#holdRequest"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-red vd_red"
+                            >
+                              <i
+                                data-original-title="hold"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-pause"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#onAccept"
+                              data-toggle="modal"
+                              href="javascript:void(0);"
+                            >
+                              <span class="badge badge-success">Accepted</span>
+                            </a>
+                          </td>
+                        </template>
+                      </CDataTable>
                       <!-- pd-20 end -->
                     </div>
 
                     <!-- accepted-request-tab SECTION 1 END -->
 
                     <div id="denied-request-tab-c1" class="tab-pane">
-                      <div class="pd-20">
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="panel widget">
-                              <div class="panel-body table-responsive">
-                                <table class="table table-hover">
-                                  <thead>
-                                    <tr>
-                                      <th>#</th>
-                                      <th>Company Name</th>
-                                      <th>Category</th>
-                                      <th>Request Time</th>
-                                      <th>Phone-No.</th>
-                                      <th>Options</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>The Company Ltd</td>
-                                      <td class="center">Bitcoin</td>
-                                      <td class="center"></td>
-                                      <td class="center">112</td>
-                                      <td class="menu-action">
-                                        <a
-                                          data-target="#viewAccept"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-green vd_green"
-                                        >
-                                          <i
-                                            data-original-title="view"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-eye"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#successAdd"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-yellow vd_yellow"
-                                        >
-                                          <i
-                                            data-original-title="accept"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-check"
-                                          ></i>
-                                        </a>
-                                        <a
-                                          data-target="#denied"
-                                          data-toggle="modal"
-                                          href="javascript:void(0);"
-                                        >
-                                          <span class="label label-danger"
-                                            >Denied</span
-                                          >
-                                        </a>
-                                        <a
-                                          data-target="#holdRequest"
-                                          data-toggle="modal"
-                                          class="btn menu-icon vd_bd-red vd_red"
-                                        >
-                                          <i
-                                            data-original-title="hold"
-                                            data-toggle="tooltip"
-                                            data-placement="top"
-                                            class="fa fa-pause"
-                                          ></i>
-                                        </a>
-                                        <!--<a data-target="#theReason" data-toggle="modal" href="javascript:void(0);"><span class="label label-default">Reason</span></a>-->
-                                      </td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                              <!-- panel-body end -->
-                            </div>
-                            <!-- panel widget end -->
-                          </div>
-                          <!-- col-md-12 end -->
-                        </div>
-                        <!-- row end -->
-                      </div>
+                      <CDataTable
+                        :hover="true"
+                        :striped="true"
+                        :border="true"
+                        :fixed="false"
+                        :items="items"
+                        :fields="[
+                          'No',
+                          'CompanyName',
+                          'Category',
+                          'RequestTime',
+                          'PhoneNo',
+                          'Options',
+                        ]"
+                        :items-per-page="10"
+                        pagination
+                      >
+                        <template #No="{index}">
+                          <td>
+                            {{ index }}
+                          </td>
+                        </template>
+                        <template #Options>
+                          <td class="menu-action">
+                            <a
+                              data-target="#viewAccept"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-green vd_green"
+                            >
+                              <i
+                                data-original-title="view"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-eye"
+                              ></i>
+                            </a>
+
+                            <a
+                              data-target="#denyRequest"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-red vd_red"
+                            >
+                              <i
+                                data-original-title="denied"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-minus-circle"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#holdRequest"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-red vd_red"
+                            >
+                              <i
+                                data-original-title="hold"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                class="fa fa-pause"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#onAccept"
+                              data-toggle="modal"
+                              href="javascript:void(0);"
+                            >
+                              <span class="badge badge-danger">Denied</span>
+                            </a>
+                          </td>
+                        </template>
+                      </CDataTable>
                       <!-- pd-20 end -->
                     </div>
 
@@ -482,7 +444,13 @@
 </template>
 
 <script>
+import tableData from "./new-request-data/tableData";
+import AllPopups from "@/views/new-request-data/AllPopups.vue";
 export default {
   name: "NewRequest",
+  components: { AllPopups },
+  data: () => ({
+    items: tableData,
+  }),
 };
 </script>

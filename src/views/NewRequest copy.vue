@@ -1,10 +1,10 @@
 <template>
-  <div id="allservices">
+  <div id="newrequest">
     <div class="vd_content-wrapper">
       <div class="vd_content clearfix">
         <div class="vd_title-section clearfix">
           <div class="vd_panel-header">
-            <h1><i class="fa fa-flag-o"></i> All Services</h1>
+            <h1><i class="fa fa-flag-o"></i> New Request</h1>
           </div>
         </div>
 
@@ -15,7 +15,7 @@
                 <div class="clearfix">
                   <div class="menu-text clearfix">
                     New
-                    <br />Services
+                    <br />Request
                   </div>
                   <span class="company-value">25</span>
                 </div>
@@ -28,7 +28,7 @@
               <a class="panel-body vd_blue pd-5" href="#">
                 <div class="clearfix">
                   <div class="menu-text clearfix">
-                    Services
+                    Request
                     <br />on Hold
                   </div>
                   <span class="company-value">1</span>
@@ -42,7 +42,7 @@
               <a class="panel-body vd_blue pd-5" href="#">
                 <div class="clearfix">
                   <div class="menu-text clearfix">
-                    Accepted Services
+                    Accepted Request
                   </div>
                   <span class="company-value">10</span>
                 </div>
@@ -56,7 +56,7 @@
                 <div class="clearfix">
                   <div class="menu-text clearfix">
                     Denied
-                    <br />Services
+                    <br />Request
                   </div>
                   <span class="company-value">2</span>
                 </div>
@@ -73,34 +73,34 @@
                     <li>
                       <a
                         data-toggle="tab"
-                        href="#new-Services-tab-c1"
+                        href="#new-request-tab-c1"
                         class="active"
                       >
-                        New Services
+                        New Request
                         <span class="menu-active">
                           <i class="fa fa-caret-up"></i>
                         </span>
                       </a>
                     </li>
                     <li>
-                      <a data-toggle="tab" href="#Services-hold-tab-c1">
-                        Services On Hold
+                      <a data-toggle="tab" href="#request-hold-tab-c1">
+                        Request On Hold
                         <span class="menu-active">
                           <i class="fa fa-caret-up"></i>
                         </span>
                       </a>
                     </li>
                     <li>
-                      <a data-toggle="tab" href="#accepted-Services-tab-c1">
-                        Accepted Services
+                      <a data-toggle="tab" href="#accepted-request-tab-c1">
+                        Accepted Request
                         <span class="menu-active">
                           <i class="fa fa-caret-up"></i>
                         </span>
                       </a>
                     </li>
                     <li>
-                      <a data-toggle="tab" href="#denied-Services-tab-c1">
-                        Denied Services
+                      <a data-toggle="tab" href="#denied-request-tab-c1">
+                        Denied Request
                         <span class="menu-active">
                           <i class="fa fa-caret-up"></i>
                         </span>
@@ -108,7 +108,7 @@
                     </li>
                   </ul>
                   <div class="tab-content">
-                    <div id="new-Services-tab-c1" class="tab-pane active">
+                    <div id="new-request-tab-c1" class="tab-pane active">
                       <CDataTable
                         :hover="true"
                         :striped="true"
@@ -119,7 +119,7 @@
                           'No',
                           'CompanyName',
                           'Category',
-                          'ServicesTime',
+                          'RequestTime',
                           'PhoneNo',
                           'Options',
                         ]"
@@ -137,7 +137,6 @@
                               data-target="#viewAccept"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-green vd_green"
-                              v-b-toggle="'view-shop-sidebar' + index"
                             >
                               <i
                                 class="fa fa-eye"
@@ -189,9 +188,9 @@
                       <!-- pd-20 end -->
                     </div>
 
-                    <!-- new-Services-tab SECTION 1 END -->
+                    <!-- new-request-tab SECTION 1 END -->
 
-                    <div id="Services-hold-tab-c1" class="tab-pane">
+                    <div id="request-hold-tab-c1" class="tab-pane">
                       <CDataTable
                         :hover="true"
                         :striped="true"
@@ -202,7 +201,7 @@
                           'No',
                           'CompanyName',
                           'Category',
-                          'ServicesTime',
+                          'RequestTime',
                           'PhoneNo',
                           'Options',
                         ]"
@@ -214,8 +213,7 @@
                             {{ index }}
                           </td>
                         </template>
-
-                        <template #Options>
+                        <template #Options="{index}">
                           <td class="menu-action">
                             <a
                               data-target="#viewAccept"
@@ -223,10 +221,19 @@
                               class="btn menu-icon vd_bd-green vd_green"
                             >
                               <i
-                                data-original-title="view"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-eye"
+                                v-b-tooltip.hover
+                                title="View"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#viewAccept"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-yellow vd_yellow"
+                              v-b-modal="'successfully-added-modal' + index"
+                            >
+                              <i
+                                class="fa fa-check"
                                 v-b-tooltip.hover
                                 title="Accept"
                               ></i>
@@ -236,24 +243,12 @@
                               data-target="#denyRequest"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'deny-request-modal' + index"
                             >
                               <i
-                                data-original-title="denied"
-                                data-toggle="tooltip"
-                                data-placement="top"
+                                v-b-tooltip.hover
+                                title="Denied"
                                 class="fa fa-minus-circle"
-                              ></i>
-                            </a>
-                            <a
-                              data-target="#holdRequest"
-                              data-toggle="modal"
-                              class="btn menu-icon vd_bd-red vd_red"
-                            >
-                              <i
-                                data-original-title="hold"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                class="fa fa-pause"
                               ></i>
                             </a>
                             <a
@@ -263,15 +258,16 @@
                             >
                               <span class="badge badge-danger">On Hold</span>
                             </a>
+                            <AllPopups :propsindex="index"> </AllPopups>
                           </td>
                         </template>
                       </CDataTable>
                       <!-- pd-20 end -->
                     </div>
 
-                    <!-- Services-hold-tab SECTION 1 END -->
+                    <!-- request-hold-tab SECTION 1 END -->
 
-                    <div id="accepted-Services-tab-c1" class="tab-pane">
+                    <div id="accepted-request-tab-c1" class="tab-pane">
                       <CDataTable
                         :hover="true"
                         :striped="true"
@@ -282,7 +278,7 @@
                           'No',
                           'CompanyName',
                           'Category',
-                          'ServicesTime',
+                          'RequestTime',
                           'PhoneNo',
                           'Options',
                         ]"
@@ -294,7 +290,7 @@
                             {{ index }}
                           </td>
                         </template>
-                        <template #Options>
+                        <template #Options="{index}">
                           <td class="menu-action">
                             <a
                               data-target="#viewAccept"
@@ -302,10 +298,9 @@
                               class="btn menu-icon vd_bd-green vd_green"
                             >
                               <i
-                                data-original-title="view"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-eye"
+                                v-b-tooltip.hover
+                                title="View"
                               ></i>
                             </a>
 
@@ -313,11 +308,11 @@
                               data-target="#denyRequest"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'deny-request-modal' + index"
                             >
                               <i
-                                data-original-title="denied"
-                                data-toggle="tooltip"
-                                data-placement="top"
+                                v-b-tooltip.hover
+                                title="Denied"
                                 class="fa fa-minus-circle"
                               ></i>
                             </a>
@@ -325,12 +320,12 @@
                               data-target="#holdRequest"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'hold-request-modal' + index"
                             >
                               <i
-                                data-original-title="hold"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-pause"
+                                v-b-tooltip.hover
+                                title="Hold"
                               ></i>
                             </a>
                             <a
@@ -340,15 +335,16 @@
                             >
                               <span class="badge badge-success">Accepted</span>
                             </a>
+                            <AllPopups :propsindex="index"> </AllPopups>
                           </td>
                         </template>
                       </CDataTable>
                       <!-- pd-20 end -->
                     </div>
 
-                    <!-- accepted-Services-tab SECTION 1 END -->
+                    <!-- accepted-request-tab SECTION 1 END -->
 
-                    <div id="denied-Services-tab-c1" class="tab-pane">
+                    <div id="denied-request-tab-c1" class="tab-pane">
                       <CDataTable
                         :hover="true"
                         :striped="true"
@@ -359,7 +355,7 @@
                           'No',
                           'CompanyName',
                           'Category',
-                          'ServicesTime',
+                          'RequestTime',
                           'PhoneNo',
                           'Options',
                         ]"
@@ -371,7 +367,7 @@
                             {{ index }}
                           </td>
                         </template>
-                        <template #Options>
+                        <template #Options="{index}">
                           <td class="menu-action">
                             <a
                               data-target="#viewAccept"
@@ -379,35 +375,33 @@
                               class="btn menu-icon vd_bd-green vd_green"
                             >
                               <i
-                                data-original-title="view"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-eye"
+                                v-b-tooltip.hover
+                                title="View"
                               ></i>
                             </a>
-
                             <a
-                              data-target="#denyRequest"
+                              data-target="#viewAccept"
                               data-toggle="modal"
-                              class="btn menu-icon vd_bd-red vd_red"
+                              class="btn menu-icon vd_bd-yellow vd_yellow"
+                              v-b-modal="'successfully-added-modal' + index"
                             >
                               <i
-                                data-original-title="denied"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                class="fa fa-minus-circle"
+                                class="fa fa-check"
+                                v-b-tooltip.hover
+                                title="Accept"
                               ></i>
                             </a>
                             <a
                               data-target="#holdRequest"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'hold-request-modal' + index"
                             >
                               <i
-                                data-original-title="hold"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-pause"
+                                v-b-tooltip.hover
+                                title="Hold"
                               ></i>
                             </a>
                             <a
@@ -417,13 +411,14 @@
                             >
                               <span class="badge badge-danger">Denied</span>
                             </a>
+                            <AllPopups :propsindex="index"> </AllPopups>
                           </td>
                         </template>
                       </CDataTable>
                       <!-- pd-20 end -->
                     </div>
 
-                    <!-- denied-Services-tab SECTION 1 END -->
+                    <!-- denied-request-tab SECTION 1 END -->
                   </div>
                   <!-- tab-content end -->
                 </div>
@@ -442,14 +437,15 @@
     </div>
   </div>
 </template>
+
 <script>
-import AllPopups from "./AllPopups.vue";
-import tableData from "./tableData";
+import tableData from "./new-request-data/tableData";
+import AllPopups from "@/views/new-request-data/AllPopups.vue";
 export default {
+  name: "NewRequest",
   components: { AllPopups },
   data: () => ({
     items: tableData,
   }),
 };
 </script>
-<style lang="scss"></style>

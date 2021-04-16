@@ -391,14 +391,15 @@ select {
     outline: 0;
 }
 
-[role=button] {
+
+/* [role=button] {
     color: #5E656B;
 }
 
 [role=button]:hover {
     cursor: pointer;
     color: #111111;
-}
+} */
 
 .vd_btn {
     background-color: #DDDDDD;
@@ -551,6 +552,10 @@ select {
     padding: 8px 12px 8px;
 }
 
+.rightSidebar .b-sidebar {
+    width: 90% !important;
+}
+
 
 /* Modals */
 
@@ -564,7 +569,7 @@ select {
 
 .modal-body {
     background: #FFFFFF;
-    padding-bottom: 40px;
+    padding: 10px;
 }
 
 .modal-footer {
@@ -689,7 +694,7 @@ a[data-toggle="tab"].active {
     width: 12px;
     height: 12px;
     background: #fff;
-    z-index: 99999;
+    z-index: 999;
     border: 1px solid #fff;
     position: absolute;
     bottom: -12px;
@@ -2405,9 +2410,10 @@ div.tagsinput span.tag a {
     border-top: 1px solid #F8F8F8;
 }
 
-.vd_content-section .row {
+
+/* .vd_content-section .row {
     margin-bottom: 20px;
-}
+} */
 
 .content-style-2 .vd_head-section {
     border-bottom: 1px solid #DDDDDD;
