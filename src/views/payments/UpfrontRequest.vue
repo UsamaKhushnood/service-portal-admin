@@ -47,11 +47,11 @@
       <ul class="nav nav-tabs widget">
         <li>
           <a href="#userclientrequest" data-toggle="tab" class="active"
-            >User / Client Request</a
+            >Upfront Done</a
           >
         </li>
         <li>
-          <a href="#clientuserrequest" data-toggle="tab">Client / User Request</a>
+          <a href="#clientuserrequest" data-toggle="tab">Upfront Denied</a>
         </li>
       </ul>
       <div class="tab-content">
@@ -64,32 +64,28 @@
             :items="items"
             :fields="[
               'No',
-              'ReviewID',
-              'ForShop',
+              'TimeandDate',
+              'UpfrontID',
+              'ContractID',
+              'CompanyName',
               'UserName',
-              'AverageRating',
-              'Date',
-              'Status',
-              'Actions',
+              'TotalAmount',
+              'UpfrontAmount',
+              'ReadyPaid',
+              'Status'
             ]"
             :items-per-page="10"
             pagination
           >
-            <template #Status="{item}">
+            <template #No="{index}">
               <td>
-                <CBadge :color="getBadge(item.Status)"
-                  >{{ item.Status }}
-                </CBadge>
+                {{index + 1}}
               </td>
             </template>
-            <template #Actions="{index}">
+            <template #Status="{index}">
               <td>
-                <button
-                  class="btn btn-success btn-sm text-center py-0"
-                  @click="deleteEntry(index)"
-                >
-                  <i class="fas fa-times" style="font-size:10px"></i>
-                </button>
+                <span class="badge badge-success" v-b-modal="'upfront-status-modal' + index">Accepted</span>
+                <UpfrontAcceptPopup :propsindex="index"> </UpfrontAcceptPopup>
               </td>
             </template>
           </CDataTable>
@@ -103,32 +99,28 @@
             :items="items"
             :fields="[
               'No',
-              'ReviewID',
-              'ForShop',
+              'TimeandDate',
+              'UpfrontID',
+              'ContractID',
+              'CompanyName',
               'UserName',
-              'AverageRating',
-              'Date',
-              'Status',
-              'Actions',
+              'TotalAmount',
+              'UpfrontAmount',
+              'ReadyPaid',
+              'Status'
             ]"
             :items-per-page="10"
             pagination
           >
-            <template #Status="{item}">
+            <template #No="{index}">
               <td>
-                <CBadge :color="getBadge(item.Status)"
-                  >{{ item.Status }}
-                </CBadge>
+                {{index + 1}}
               </td>
             </template>
-            <template #Actions="{index}">
+            <template #Status="{index}">
               <td>
-                <button
-                  class="btn btn-success btn-sm text-center py-0"
-                  @click="deleteEntry(index)"
-                >
-                  <i class="fas fa-times" style="font-size:10px"></i>
-                </button>
+                 <span class="badge badge-danger" v-b-modal="'denied-modal'+ index">Denied</span>
+                 <DeniedPopup :propsindex="index"> </DeniedPopup>
               </td>
             </template>
           </CDataTable>
@@ -139,6 +131,15 @@
   </div>
 </template>
 <script>
-export default {};
+import DeniedPopup from './AllPopups/RequestPopups/DeniedPopup.vue'
+import UpfrontAcceptPopup from './AllPopups/RequestPopups/UpfrontAcceptPopup.vue'
+import upFrontTableData from './UpfrontTableDate'
+export default {
+  components: { UpfrontAcceptPopup, DeniedPopup },
+  data: () => ({
+    items: upFrontTableData
+  })
+
+};
 </script>
 <style lang="scss"></style>

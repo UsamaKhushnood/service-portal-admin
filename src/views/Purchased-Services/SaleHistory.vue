@@ -70,9 +70,9 @@
           :items="items"
           :fields="[
             'No',
-            'Company Name',
+            'CompanyName',
             'Category',
-            'Services Amount',
+            'ServicesAmount',
             'Sales',
           ]"
           :items-per-page="10"
@@ -85,7 +85,7 @@
           </template>
           <template #Actions="{index}">
             <td>
-              <button
+              <button  
                 class="btn btn-success btn-sm text-center py-0"
                 @click="deleteEntry(index)"
               >
@@ -105,8 +105,11 @@
     </div>
 </template>
 <script>
+import tableData from './tableData'
 export default {
-    
+  data: () => ({
+      items: tableData
+  })
 }
 </script>
 <style lang="scss">

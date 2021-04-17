@@ -137,7 +137,6 @@
                               data-target="#viewAccept"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-green vd_green"
-                              v-b-toggle="'view-shop-sidebar' + index"
                             >
                               <i
                                 class="fa fa-eye"
@@ -214,8 +213,7 @@
                             {{ index }}
                           </td>
                         </template>
-
-                        <template #Options>
+                        <template #Options="{index}">
                           <td class="menu-action">
                             <a
                               data-target="#viewAccept"
@@ -223,10 +221,19 @@
                               class="btn menu-icon vd_bd-green vd_green"
                             >
                               <i
-                                data-original-title="view"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-eye"
+                                v-b-tooltip.hover
+                                title="View"
+                              ></i>
+                            </a>
+                            <a
+                              data-target="#viewAccept"
+                              data-toggle="modal"
+                              class="btn menu-icon vd_bd-yellow vd_yellow"
+                              v-b-modal="'successfully-added-modal' + index"
+                            >
+                              <i
+                                class="fa fa-check"
                                 v-b-tooltip.hover
                                 title="Accept"
                               ></i>
@@ -236,24 +243,12 @@
                               data-target="#denyRequest"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'deny-request-modal' + index"
                             >
                               <i
-                                data-original-title="denied"
-                                data-toggle="tooltip"
-                                data-placement="top"
+                                v-b-tooltip.hover
+                                title="Denied"
                                 class="fa fa-minus-circle"
-                              ></i>
-                            </a>
-                            <a
-                              data-target="#holdRequest"
-                              data-toggle="modal"
-                              class="btn menu-icon vd_bd-red vd_red"
-                            >
-                              <i
-                                data-original-title="hold"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                class="fa fa-pause"
                               ></i>
                             </a>
                             <a
@@ -263,6 +258,7 @@
                             >
                               <span class="badge badge-danger">On Hold</span>
                             </a>
+
                           </td>
                         </template>
                       </CDataTable>
@@ -294,7 +290,7 @@
                             {{ index }}
                           </td>
                         </template>
-                        <template #Options>
+                        <template #Options="{index}">
                           <td class="menu-action">
                             <a
                               data-target="#viewAccept"
@@ -302,10 +298,9 @@
                               class="btn menu-icon vd_bd-green vd_green"
                             >
                               <i
-                                data-original-title="view"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-eye"
+                                v-b-tooltip.hover
+                                title="View"
                               ></i>
                             </a>
 
@@ -313,11 +308,11 @@
                               data-target="#denyRequest"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'deny-request-modal' + index"
                             >
                               <i
-                                data-original-title="denied"
-                                data-toggle="tooltip"
-                                data-placement="top"
+                                v-b-tooltip.hover
+                                title="Denied"
                                 class="fa fa-minus-circle"
                               ></i>
                             </a>
@@ -325,12 +320,12 @@
                               data-target="#holdRequest"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'hold-request-modal' + index"
                             >
                               <i
-                                data-original-title="hold"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-pause"
+                                v-b-tooltip.hover
+                                title="Hold"
                               ></i>
                             </a>
                             <a
@@ -340,6 +335,7 @@
                             >
                               <span class="badge badge-success">Accepted</span>
                             </a>
+                            
                           </td>
                         </template>
                       </CDataTable>
@@ -371,7 +367,7 @@
                             {{ index }}
                           </td>
                         </template>
-                        <template #Options>
+                        <template #Options="{index}">
                           <td class="menu-action">
                             <a
                               data-target="#viewAccept"
@@ -379,35 +375,33 @@
                               class="btn menu-icon vd_bd-green vd_green"
                             >
                               <i
-                                data-original-title="view"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-eye"
+                                v-b-tooltip.hover
+                                title="View"
                               ></i>
                             </a>
-
                             <a
-                              data-target="#denyRequest"
+                              data-target="#viewAccept"
                               data-toggle="modal"
-                              class="btn menu-icon vd_bd-red vd_red"
+                              class="btn menu-icon vd_bd-yellow vd_yellow"
+                              v-b-modal="'successfully-added-modal' + index"
                             >
                               <i
-                                data-original-title="denied"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                class="fa fa-minus-circle"
+                                class="fa fa-check"
+                                v-b-tooltip.hover
+                                title="Accept"
                               ></i>
                             </a>
                             <a
                               data-target="#holdRequest"
                               data-toggle="modal"
                               class="btn menu-icon vd_bd-red vd_red"
+                              v-b-modal="'hold-request-modal' + index"
                             >
                               <i
-                                data-original-title="hold"
-                                data-toggle="tooltip"
-                                data-placement="top"
                                 class="fa fa-pause"
+                                v-b-tooltip.hover
+                                title="Hold"
                               ></i>
                             </a>
                             <a
@@ -417,6 +411,7 @@
                             >
                               <span class="badge badge-danger">Denied</span>
                             </a>
+
                           </td>
                         </template>
                       </CDataTable>

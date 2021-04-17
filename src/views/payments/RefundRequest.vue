@@ -64,32 +64,28 @@
             :items="items"
             :fields="[
               'No',
-              'ReviewID',
-              'ForShop',
+              'TimeandDate',
+              'UpfrontID',
+              'ContractID',
+              'CompanyName',
               'UserName',
-              'AverageRating',
-              'Date',
-              'Status',
-              'Actions',
+              'TotalAmount',
+              'UpfrontAmount',
+              'ReadyPaid',
+              'Status'
             ]"
             :items-per-page="10"
             pagination
           >
-            <template #Status="{item}">
+            <template #No="{index}">
               <td>
-                <CBadge :color="getBadge(item.Status)"
-                  >{{ item.Status }}
-                </CBadge>
+                {{index + 1}}
               </td>
             </template>
-            <template #Actions="{index}">
+            <template #Status="{index}">
               <td>
-                <button
-                  class="btn btn-success btn-sm text-center py-0"
-                  @click="deleteEntry(index)"
-                >
-                  <i class="fas fa-times" style="font-size:10px"></i>
-                </button>
+                 <span class="badge badge-success" v-b-modal="'denied-modal'+ index">Open</span>
+                 <DeniedPopup :propsindex="index"> </DeniedPopup>
               </td>
             </template>
           </CDataTable>
@@ -103,32 +99,27 @@
             :items="items"
             :fields="[
               'No',
-              'ReviewID',
-              'ForShop',
+              'TimeandDate',
+              'UpfrontID',
+              'ContractID',
+              'CompanyName',
               'UserName',
-              'AverageRating',
-              'Date',
-              'Status',
-              'Actions',
+              'TotalAmount',
+              'UpfrontAmount',
+              'ReadyPaid',
+              'Status'
             ]"
             :items-per-page="10"
             pagination
           >
-            <template #Status="{item}">
+            <template #No="{index}">
               <td>
-                <CBadge :color="getBadge(item.Status)"
-                  >{{ item.Status }}
-                </CBadge>
+                {{index + 1}}
               </td>
             </template>
-            <template #Actions="{index}">
+            <template #Status="{index}">
               <td>
-                <button
-                  class="btn btn-success btn-sm text-center py-0"
-                  @click="deleteEntry(index)"
-                >
-                  <i class="fas fa-times" style="font-size:10px"></i>
-                </button>
+                 <span class="badge badge-danger" v-b-modal="'denied-modal'+ index">Close</span>
               </td>
             </template>
           </CDataTable>
@@ -139,10 +130,13 @@
   </div>
 </template>
 <script>
-import usersData from "./reviewTableData";
+import DeniedPopup from './AllPopups/RequestPopups/DeniedPopup.vue'
+
+import upFrontTableData from './UpfrontTableDate';
 export default {
+  components: { DeniedPopup },
   data: () => ({
-    items: usersData,
+    items: upFrontTableData,
   }),
   methods: {
     getBadge(status) {
