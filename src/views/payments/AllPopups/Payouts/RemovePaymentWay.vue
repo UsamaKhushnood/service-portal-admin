@@ -1,25 +1,32 @@
 <template>
   <div>
     <b-modal
-      :id="'edit-payment-modal' + propsindex"
-      title="Edit Payment Way"
-      header-bg-variant="success"
+      :id="'remove-payment-modal' + propsindex"
+      title="Remove Payment Way"
+      header-bg-variant="danger"
       header-text-variant="light"
     >
       <div class="modal-body">
-        <b-form >
+        <b-form>
           <b-form-group
             id="input-group-1"
-            label="Comments"
+            label="Coupon Code"
             label-for="input-1"
             description="We'll never share your email with anyone else."
           >
-            <b-form-textarea
-              id="textarea"
-              rows="6"
-              max-rows="6"
-            ></b-form-textarea>
+            <div class="row">
+              <div class="col-md-9">
+                <b-form-input
+                  placeholder="Generate Code"
+                  size="sm"
+                ></b-form-input>
+              </div>
+              <div class="col-md-2">
+                <b-button variant="dark" size="sm">Generate</b-button>
+              </div>
+            </div>
           </b-form-group>
+            <b-button variant="danger" size="sm" block class="mt-2 ">Submit</b-button>
         </b-form>
       </div>
       <template #modal-footer="{hide}">
@@ -35,9 +42,7 @@
 <script>
 export default {
   props: ["propsindex"],
-  data: () => ({
-
-  }),
+  data: () => ({}),
 };
 </script>
 <style lang="scss"></style>

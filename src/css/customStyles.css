@@ -40,3 +40,7 @@
 .modal-header {
     border-radius: 0 !important;
 }
+
+ul.pagination.justify-content-start {
+    padding: 0 20px 17px 20px;
+}

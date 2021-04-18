@@ -91,8 +91,8 @@
               :items-per-page="10"
               pagination
             >
-              <template #Options='{index}'>
-                <td>
+              <template #Options="{index}">
+                <td class="menu-action">
                   <a
                     class="btn menu-icon vd_bd-blue vd_blue mrgn5 pdng1-8"
                     v-b-modal="'edit-payment-modal' + index"
@@ -105,8 +105,7 @@
                   ></a>
                   <a
                     class="btn menu-icon vd_bd-green vd_green mrgn5 pdng1-8"
-                    data-toggle="modal"
-                    data-target="#removePayWay"
+                    v-b-modal="'remove-payment-modal' + index"
                     ><i
                       class="fa fa-money"
                       data-original-title="pay"
@@ -114,8 +113,9 @@
                       data-placement="top"
                     ></i
                   ></a>
+                <EditPaymentWay :propsindex="index"> </EditPaymentWay>
+                <RemovePaymentWay :propsindex="index"> </RemovePaymentWay>
                 </td>
-                 <EditPaymentWay :propsindex="index"> </EditPaymentWay>
               </template>
             </CDataTable>
           </div>
@@ -141,22 +141,21 @@
               :items-per-page="10"
               pagination
             >
-              <template #Options='{index}'>
-                <td>
+              <template #Options="{index}">
+                <td class="menu-action">
                   <a
                     class="btn menu-icon vd_bd-blue vd_blue mrgn5 pdng1-8"
                     v-b-modal="'edit-payment-modal' + index"
                     ><i
                       class="fa fa-eye"
-                      data-original-title="view"  
+                      data-original-title="view"
                       data-toggle="tooltip"
                       data-placement="top"
                     ></i
                   ></a>
                   <a
                     class="btn menu-icon vd_bd-green vd_green mrgn5 pdng1-8"
-                    data-toggle="modal"
-                    data-target="#removePayWay"
+                    v-b-modal="'remove-payment-modal' + index"
                     ><i
                       class="fa fa-money"
                       data-original-title="pay"
@@ -165,8 +164,6 @@
                     ></i
                   ></a>
                 </td>
-
-               
               </template>
             </CDataTable>
           </div>
@@ -192,13 +189,13 @@
               :items-per-page="10"
               pagination
             >
-              <template #Options='{index}'>
-                <td>
+              <template #Options="{index}">
+                <td class="menu-action">
                   <a
                     class="btn menu-icon vd_bd-blue vd_blue mrgn5 pdng1-8"
                     data-toggle="modal"
                     data-target="#editPayWay"
-                     v-b-modal="'edit-payment-modal' + index" 
+                    v-b-modal="'edit-payment-modal' + index"
                     ><i
                       class="fa fa-eye"
                       data-original-title="view"
@@ -206,17 +203,11 @@
                       data-placement="top"
                     ></i
                   ></a>
-                  <a
-                    class="btn menu-icon vd_bd-green vd_green mrgn5 pdng1-8"
-                    data-toggle="modal"
-                    data-target="#removePayWay"
-                    ><i
-                      class="fa fa-money"
-                      data-original-title="pay"
-                      data-toggle="tooltip"
-                      data-placement="top"
-                    ></i
-                  ></a>
+                </td>
+              </template>
+              <template #Status> 
+                <td>
+                     <b-form-select value="Open" :options="['Open', 'Close']" size="sm"></b-form-select>
                 </td>
               </template>
             </CDataTable>
@@ -228,11 +219,12 @@
   </div>
 </template>
 <script>
-import EditPaymentWay from './AllPopups/Payouts/EditPaymentWay.vue'
+import RemovePaymentWay from "./AllPopups/Payouts/RemovePaymentWay.vue";
+import EditPaymentWay from "./AllPopups/Payouts/EditPaymentWay.vue";
 import UpfrontAcceptPopup from "./AllPopups/RequestPopups/UpfrontAcceptPopup.vue";
 import payoutsTableData from "./payoutsTableData";
 export default {
-  components: { UpfrontAcceptPopup, EditPaymentWay },
+  components: { UpfrontAcceptPopup, EditPaymentWay, RemovePaymentWay },
   data: () => ({
     items: payoutsTableData,
   }),

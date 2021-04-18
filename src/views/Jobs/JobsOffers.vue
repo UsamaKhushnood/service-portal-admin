@@ -1,5 +1,5 @@
 <template>
-    <div id="salesHistory">
+  <div id="salesHistory">
     <div class="vd_content-wrapper">
       <div class="vd_content clearfix">
         <div class="vd_title-section clearfix">
@@ -306,7 +306,7 @@
                                 title="Hold"
                               ></i>
                             </a>
-                                                        <a
+                            <a
                               data-target="#onAccept"
                               data-toggle="modal"
                               href="javascript:void(0);"
@@ -375,7 +375,7 @@
                                 title="Hold"
                               ></i>
                             </a>
-                                                        <a
+                            <a
                               data-target="#onAccept"
                               data-toggle="modal"
                               href="javascript:void(0);"
@@ -404,18 +404,16 @@
 
       <!-- .vd_container -->
     </div>
-    </div>
+  </div>
 </template>
 <script>
 import tableData from "./tableData";
-import AllPopups from './AllPopups'
+import AllPopups from "./AllPopups";
 export default {
-  components: {AllPopups},
+  components: { AllPopups },
   data: () => ({
     items: tableData,
   }),
 };
 </script>
-<style lang="scss">
-    
-</style>
+<style lang="scss"></style>

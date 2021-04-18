@@ -4,8 +4,7 @@
       <div class="vd_content clearfix">
         <div class="vd_title-section clearfix">
           <div class="vd_panel-header">
-            <h1><i class="fa fa-id-card
-"></i> Poratl Clients</h1>
+            <h1><i class="fa fa-id-card"></i> Poratl Clients</h1>
           </div>
         </div>
       </div>
@@ -18,19 +17,19 @@
             <button
               type="button"
               class="btn vd_btn vd_bg-blue btn-lg btn-block"
-              data-toggle="modal"
-              data-target="#sentMessageCompany"
+              v-b-modal="'send-message-modal'"
             >
               <span class="append-icon"
                 ><i class="fa fa-comment-o fa-fw"></i></span
               >Sent Message To All Clients
             </button>
+            <SendMessagePopup />
           </div>
         </div>
         <div class="col-md-4"></div>
       </div>
 
-      <div class="row">
+      <div class="row mt-3">
         <div class="col-sm-12">
           <!-- Category1 Tab -->
           <div id="category1" class="active tab-pane fade in show">
@@ -85,12 +84,12 @@
               </div>
               <!-- row dashboardPanels end -->
 
-              <div class="row">
+              <div class="row mt-3">
                 <div class="col-sm-12">
                   <div class="tabs widget">
                     <ul class="nav nav-tabs widget">
-                      <li class="active">
-                        <a data-toggle="tab" href="#allCompaniesTab1">
+                      <li>
+                        <a data-toggle="tab" href="#allCompaniesTab1"  class="active">
                           All Companies
                           <span class="menu-active"
                             ><i class="fa fa-caret-up"></i></span
@@ -319,8 +318,10 @@
   </div>
 </template>
 <script>
+import SendMessagePopup from './allPopups/SendMessagePopup.vue'
 import usersData from "./reviewTableData";
 export default {
+  components: { SendMessagePopup },
   data: () => ({
     items: usersData,
   }),
