@@ -99,8 +99,8 @@
         <div class="col-sm-12">
           <div class="tabs widget">
             <ul class="nav nav-tabs widget">
-              <li class="active">
-                <a data-toggle="tab" href="#monthlyIncome">
+              <li >
+                <a data-toggle="tab" href="#monthlyIncome" class="active">
                   Monthly Income
                   <span class="menu-active"><i class="fa fa-caret-up"></i></span
                 ></a>

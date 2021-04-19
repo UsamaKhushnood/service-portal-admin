@@ -7,7 +7,7 @@
       </div>
       <template #modal-footer="{hide}">
         <div class="w-100">
-          <b-button variant="dark" size="sm" class="float-right" @click="hide">
+          <b-button variant="dark" size="sm" class="float-right" @click="hide" squared>
             Close
           </b-button>
         </div>

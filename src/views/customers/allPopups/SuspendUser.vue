@@ -1,14 +1,14 @@
 <template>
   <div>
     <b-modal
-      :id="'block-user-modal' + propsindex"
-      title="Block this User"
-      header-bg-variant="danger"
+      :id="'suspend-user-modal' + propsindex"
+      title="Suspend This User "
+      header-bg-variant="danger "
       header-text-variant="light"
     >
       <div class="modal-body">
         <b-form>
-            <b-form-select size="sm" value="Select Block Reason" :options="['Select Block Reason', 'Because of','Because of']">
+            <b-form-select size="sm" value="Select Suspend Reason" :options="['Select Suspend Reason', 'Because of','Because of']">
 
             </b-form-select>
             <b-button size="sm" variant="danger" class="mt-2 " block >Ok</b-button>

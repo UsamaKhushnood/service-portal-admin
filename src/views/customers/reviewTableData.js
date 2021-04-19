@@ -1,14 +1,12 @@
 const reviews = [
-    { No: 1, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Seen' },
-    { No: 2, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Seen' },
-    { No: 3, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Unseen', _classes: 'table-danger' },
-    { No: 4, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Seen' },
-    { No: 5, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Unseen', _classes: 'table-danger' },
-    { No: 6, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Seen' },
-    { No: 7, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Seen' },
-    { No: 8, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Seen' },
-    { No: 9, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Seen' },
-    { No: 10, ReviewID: 'yami-200', ForShop: 'My Shop', UserName: 'Rizwan', AverageRating: 5, Date: '22/3/2021', Status: 'Seen' },
+    { UserName: 'user211', UserID: '2453565', CurrentJob: 'CJ', JobsDone: 'JD', JobsCancelled: 'JC', Reviews: 5 },
+    { UserName: 'user211', UserID: '2453565', CurrentJob: 'CJ', JobsDone: 'JD', JobsCancelled: 'JC', Reviews: 5 },
+    { UserName: 'user211', UserID: '2453565', CurrentJob: 'CJ', JobsDone: 'JD', JobsCancelled: 'JC', Reviews: 5 },
+    { UserName: 'user211', UserID: '2453565', CurrentJob: 'CJ', JobsDone: 'JD', JobsCancelled: 'JC', Reviews: 5 },
+    { UserName: 'user211', UserID: '2453565', CurrentJob: 'CJ', JobsDone: 'JD', JobsCancelled: 'JC', Reviews: 5 },
+    { UserName: 'user211', UserID: '2453565', CurrentJob: 'CJ', JobsDone: 'JD', JobsCancelled: 'JC', Reviews: 5 },
+    { UserName: 'user211', UserID: '2453565', CurrentJob: 'CJ', JobsDone: 'JD', JobsCancelled: 'JC', Reviews: 5 },
+    { UserName: 'user211', UserID: '2453565', CurrentJob: 'CJ', JobsDone: 'JD', JobsCancelled: 'JC', Reviews: 4 },
 ]
 
 export default reviews;

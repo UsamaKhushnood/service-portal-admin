@@ -81,10 +81,10 @@
             </template>
 
             <template #Options>
-              <td>
-                <button class="btn btn-outline-dark btn-sm text-center py-0">
-                  <i class="fas fa-eye" style="font-size:10px"></i> View
-                </button>
+              <td class="menu-action">
+                <b-button variant="dark" size="xs">
+                  <i class="fas fa-eye" ></i> 
+                </b-button>
                 </td>
             </template>
           </CDataTable>
