@@ -16,23 +16,23 @@
           <button
             type="button"
             class="btn vd_btn vd_bg-blue btn-lg btn-block"
-            data-toggle="modal"
-            data-target="#addComission"
+            v-b-modal.add-service-commission-modal
           >
             <span class="append-icon"><i class="fa fa-plus-square"></i></span
             >Add Service Comission
           </button>
+          <AddServiceCommission />
         </div>
         <div class="col-md-4">
           <button
             type="button"
             class="btn vd_btn vd_bg-blue btn-lg btn-block"
-            data-toggle="modal"
-            data-target="#addService"
+            v-b-modal.add-sale-service-modal
           >
             <span class="append-icon"><i class="fa fa-plus-square"></i></span
             >Add % Sale Service
           </button>
+          <AddSaleService />
         </div>
         <div class="col-md-2"></div>
       </div>
@@ -305,6 +305,10 @@
   </div>
 </template>
 <script>
-export default {};
+import AddSaleService from './service-commission/AddSaleService.vue'
+import AddServiceCommission from './service-commission/AddServiceCommission.vue'
+export default {
+  components: { AddServiceCommission, AddSaleService }
+};
 </script>
 <style lang="scss"></style>

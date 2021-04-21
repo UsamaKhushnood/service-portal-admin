@@ -16,13 +16,13 @@
             <button
               type="button"
               class="btn vd_btn vd_bg-blue btn-lg btn-block"
-              data-toggle="modal"
-              data-target="#addMaincategory"
+              v-b-modal.add-main-category-modal
             >
               <span class="append-icon"
                 ><i class="fa fa-plus-circle fa-fw"></i></span
               >Add Maincategory
             </button>
+            <AddMainCategoryPopup />
           </div>
         </div>
         <div class="col-md-4">
@@ -30,13 +30,13 @@
             <button
               type="button"
               class="btn vd_btn vd_bg-blue btn-lg btn-block"
-              data-toggle="modal"
-              data-target="#addSubcategory"
+              v-b-modal.add-sub-category-modal
             >
               <span class="append-icon"
                 ><i class="fa fa-plus-circle fa-fw"></i></span
               >Add Subcategory
             </button>
+            <AddSubCategoryPopup />
           </div>
         </div>
         <div class="col-md-4">
@@ -44,13 +44,13 @@
             <button
               type="button"
               class="btn vd_btn vd_bg-blue btn-lg btn-block"
-              data-toggle="modal"
-              data-target="#addKeyword"
+              v-b-modal.add-keyword-modal
             >
               <span class="append-icon"
                 ><i class="fa fa-plus-circle fa-fw"></i></span
               >Add Keywords
             </button>
+            <AddKeywordPopup />
           </div>
         </div>
       </div>
@@ -225,6 +225,11 @@
   </div>
 </template>
 <script>
-export default {};
+import AddKeywordPopup from './our-services/AddKeywordPopup.vue'
+import AddSubCategoryPopup from './our-services/AddSubCategoryPopup.vue'
+import AddMainCategoryPopup from './our-services/AddMainCategoryPopup.vue'
+export default {
+  components: { AddMainCategoryPopup, AddSubCategoryPopup, AddKeywordPopup }
+};
 </script>
 <style lang="scss"></style>

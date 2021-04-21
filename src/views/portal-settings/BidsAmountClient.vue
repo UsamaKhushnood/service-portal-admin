@@ -16,12 +16,12 @@
           <button
             type="button"
             class="btn vd_btn vd_bg-blue btn-lg btn-block"
-            data-toggle="modal"
-            data-target="#addBid"
+            v-b-modal.add-bid-amount-modal
           >
             <span class="append-icon"><i class="fa fa-plus-square"></i></span
             >Add New Bid
           </button>
+          <AddNewBidModal />
         </div>
         <div class="col-md-4"></div>
       </div>
@@ -85,6 +85,9 @@
   </div>
 </template>
 <script>
-export default {};
+import AddNewBidModal from './bid-amount/AddNewBidModal.vue'
+export default {
+  components: { AddNewBidModal }
+};
 </script>
 <style lang="scss"></style>

@@ -16,23 +16,23 @@
           <button
             type="button"
             class="btn vd_btn vd_bg-blue btn-lg btn-block"
-            data-toggle="modal"
-            data-target="#addCategory"
+            v-b-modal.add-category-modal
           >
             <span class="append-icon"><i class="fa fa-plus-square"></i></span
             >Add Category
           </button>
+          <AddCategoryPopup />
         </div>
         <div class="col-md-4">
           <button
             type="button"
             class="btn vd_btn vd_bg-blue btn-lg btn-block"
-            data-toggle="modal"
-            data-target="#addReason"
+            v-b-modal.add-reason-modal
           >
             <span class="append-icon"><i class="fa fa-plus-square"></i></span
             >Add Reason
           </button>
+          <AddReasonPopup />
         </div>
         <div class="col-md-2"></div>
       </div>
@@ -127,6 +127,10 @@
   </div>
 </template>
 <script>
-export default {};
+import AddReasonPopup from './reasons/AddReasonPopup.vue'
+import AddCategoryPopup from './reasons/AddCategoryPopup.vue'
+export default {
+  components: { AddCategoryPopup, AddReasonPopup }
+};
 </script>
 <style lang="scss"></style>

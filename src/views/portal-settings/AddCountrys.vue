@@ -71,14 +71,15 @@
                 {{ index + 1 }}
               </td>
             </template>
-            <template #Options>
+            <template #Options='{index}'>
               <td class="menu-action">
-                <a class="btn menu-icon vd_bd-blue vd_blue">
+                <a class="btn menu-icon vd_bd-blue vd_blue" v-b-modal="'add-country-table-modal'+index">
                   <i
                     class="fa fa-plus"
                     data-toggle="tooltip"
                     data-original-title="add new"
                     data-placement="top"
+                    
                   ></i>
                 </a>
                 <a
@@ -106,6 +107,7 @@
                   <i class="fa fa-times"></i>
                 </a>
               </td>
+              <AddCountryTableModal :propsindex="index" > </AddCountryTableModal>
             </template>
           </CDataTable>
         </div>
@@ -114,11 +116,12 @@
   </div>
 </template>
 <script>
+import AddCountryTableModal from './addCountry/AddCountryTableModal.vue'
 import AddCityModal from "./addCountry/AddCityModal.vue";
 import AddDistrictModal from "./addCountry/AddDistrictModal.vue";
 import AddCountryModal from "./addCountry/AddCountryModal.vue";
 export default {
-  components: { AddCountryModal, AddDistrictModal, AddCityModal },
+  components: { AddCountryModal, AddDistrictModal, AddCityModal, AddCountryTableModal },
   data: () => ({
     items: [
       { Country: "Beauty", District: 5, City: 10 },

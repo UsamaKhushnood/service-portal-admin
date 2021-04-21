@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-modal
-      id="add-country-modal"
+      :id="'add-country-table-modal' + propsindex"
       title="Add Country"
       header-bg-variant="success"
       header-text-variant="light"
@@ -44,9 +44,9 @@
 </template>
 <script>
 export default {
-    props: [
-        "propsindex"
-    ],
+  props:[
+    'propsindex'
+  ],
   data: () => ({
   }),
 };

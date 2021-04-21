@@ -16,12 +16,12 @@
           <button
             type="button"
             class="btn vd_btn vd_bg-blue btn-lg btn-block"
-            data-toggle="modal"
-            data-target="#addCompany"
+            v-b-modal.add-company-type-modal
           >
             <span class="append-icon"><i class="fa fa-plus-square"></i></span
             >Add Company Type
           </button>
+          <AddCompanyType />
         </div>
         <div class="col-md-4"></div>
       </div>
@@ -112,6 +112,9 @@
   </div>
 </template>
 <script>
-export default {};
+import AddCompanyType from './account-upgrade-client/AddCompanyType.vue'
+export default {
+  components: { AddCompanyType }
+};
 </script>
 <style lang="scss"></style>

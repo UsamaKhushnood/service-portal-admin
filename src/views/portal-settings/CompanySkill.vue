@@ -16,12 +16,12 @@
           <button
             type="button"
             class="btn vd_btn vd_bg-blue btn-lg btn-block"
-            data-toggle="modal"
-            data-target="#addCompany"
+            v-b-modal.add-new-skill-modal
           >
             <span class="append-icon"><i class="fa fa-plus-square"></i></span
             >Add New Skill
           </button>
+          <AddNewSkillPopup />
         </div>
         <div class="col-md-4"></div>
       </div>
@@ -112,6 +112,9 @@
   </div>
 </template>
 <script>
-export default {};
+import AddNewSkillPopup from './company-skill/AddNewSkillPopup.vue'
+export default {
+  components: { AddNewSkillPopup }
+};
 </script>
 <style lang="scss"></style>
